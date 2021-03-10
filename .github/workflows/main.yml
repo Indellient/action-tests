@@ -13,7 +13,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - id: test
-        uses: Indellient/s3-publish-action@v0.1.1
+        uses: Indellient/s3-publish-action@v0.1.2
         with:
           folder-name: 'master'
           bucket-name: ${{ secrets.bucket_name }}
+          clear-folder: true
+          exclusions: '.git/*,.gitignore'
