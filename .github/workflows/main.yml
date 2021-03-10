@@ -18,4 +18,4 @@ jobs:
           folder-name: 'master'
           bucket-name: ${{ secrets.bucket_name }}
           clear-folder: true
-          exclusions: '.git/*,.gitignore'
+          exclusions: '.git/*,.gitignore,.github/*'
