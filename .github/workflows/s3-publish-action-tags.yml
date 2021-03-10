@@ -1,4 +1,7 @@
-on: [push]
+on:
+  create:
+    tags:
+      - v*
 
 jobs:
   test-s3-publish-action:
@@ -15,7 +18,7 @@ jobs:
       - id: test
         uses: Indellient/s3-publish-action@v0.1.2
         with:
-          folder-name: 'master'
+          folder-name: "${GITHUB_REF#refs/*/}"
           bucket-name: ${{ secrets.bucket_name }}
           clear-folder: true
           exclusions: '.git/*,.gitignore,.github/*'

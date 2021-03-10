@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-s3-publish-action:
+    runs-on: ubuntu-latest
+    name: Test s3-publish-action
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - id: test
+        uses: Indellient/s3-publish-action@v0.1.2
+        with:
+          folder-name: 'master'
+          bucket-name: ${{ secrets.bucket_name }}
+          clear-folder: true
+          exclusions: '.git/*,.gitignore,.github/*'
