@@ -16,7 +16,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - id: test
-        uses: Indellient/s3-publish-action@v0.1.2
+        uses: Indellient/s3-publish-action@v0.1.4
         with:
           folder-name: "${GITHUB_REF#refs/*/}"
           bucket-name: ${{ secrets.bucket_name }}
