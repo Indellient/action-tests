@@ -25,7 +25,7 @@ jobs:
       - id: test-publish-head
         uses: Indellient/s3-publish-action@v0.1.4
         with:
-          folder-name: "${GITHUB_SHA::8}"
+          folder-name: "commits/${GITHUB_SHA::8}"
           bucket-name: ${{ secrets.bucket_name }}
           clear-folder: true
           exclusions: '.git/*,.gitignore,.github/*'

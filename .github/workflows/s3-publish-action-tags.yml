@@ -18,7 +18,7 @@ jobs:
       - id: test
         uses: Indellient/s3-publish-action@v0.1.4
         with:
-          folder-name: "${GITHUB_REF#refs/*/}"
+          folder-name: "tags/${GITHUB_REF#refs/*/}"
           bucket-name: ${{ secrets.bucket_name }}
           clear-folder: true
           exclusions: '.git/*,.gitignore,.github/*'
